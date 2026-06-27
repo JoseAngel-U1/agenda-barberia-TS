@@ -4,6 +4,7 @@ import type { BookingSummaryProps } from "../../types/ui"
 
 export default function BookingSummary({
     clientName,
+    clientPhone,
     selectedService,
     selectedBarber,
     date,
@@ -12,6 +13,7 @@ export default function BookingSummary({
     bookingError,
     isValid,
     onClientNameChange,
+    onClientPhoneChange,
     onConfirm,
 }: BookingSummaryProps) {
     return (
@@ -52,6 +54,30 @@ export default function BookingSummary({
                                 onClientNameChange(event.target.value)
                             }
                             placeholder="Ej. Juan Perez"
+                            className="mt-2 w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-4 text-white outline-none transition placeholder:text-zinc-600 focus:border-[hsl(var(--primary)/0.8)] focus:ring-4 focus:ring-[hsl(var(--primary)/0.1)]"
+                        />
+                    </div>
+
+                    <div>
+                        <label
+                            htmlFor="client-phone"
+                            className="text-sm font-medium text-zinc-400"
+                        >
+                            Teléfono de contacto
+                        </label>
+
+                        <input
+                            id="client-phone"
+                            type="tel"
+                            value={clientPhone}
+                            inputMode="numeric"
+                            maxLength={10}
+                            onChange={(event) =>
+                                onClientPhoneChange(
+                                    event.target.value.replace(/\D/g, "").slice(0, 10)
+                                )
+                            }
+                            placeholder="Ej. 311 123 4567"
                             className="mt-2 w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-4 text-white outline-none transition placeholder:text-zinc-600 focus:border-[hsl(var(--primary)/0.8)] focus:ring-4 focus:ring-[hsl(var(--primary)/0.1)]"
                         />
                     </div>
@@ -114,11 +140,10 @@ export default function BookingSummary({
                         type="button"
                         onClick={onConfirm}
                         disabled={!isValid}
-                        className={`flex w-full items-center justify-center gap-2 rounded-xl px-5 py-4 text-base font-black transition ${
-                            isValid
+                        className={`flex w-full items-center justify-center gap-2 rounded-xl px-5 py-4 text-base font-black transition ${isValid
                                 ? "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] shadow-lg shadow-black/30 hover:bg-[hsl(var(--primary)/0.9)] hover:scale-[1.01]"
                                 : "cursor-not-allowed bg-zinc-800 text-zinc-500"
-                        }`}
+                            }`}
                     >
                         <CheckCircle2 className="h-5 w-5" />
 

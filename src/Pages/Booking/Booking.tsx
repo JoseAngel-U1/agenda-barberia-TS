@@ -27,6 +27,7 @@ export default function Booking() {
     const [date, setDate] = useState<string>("")
     const [time, setTime] = useState<string>("")
     const [clientName, setClientName] = useState<string>("")
+    const [clientPhone, setClientPhone] = useState("");
 
     const [success, setSuccess] = useState<Appointment | null>(null)
     const [bookingError, setBookingError] = useState<string>("")
@@ -222,6 +223,7 @@ export default function Booking() {
                     {/*//TODO:  */}
                     <BookingSummary
                         clientName={clientName}
+                        clientPhone={clientPhone}
                         selectedService={selectedService}
                         selectedBarber={selectedBarber}
                         date={date}
@@ -230,6 +232,7 @@ export default function Booking() {
                         bookingError={bookingError}
                         isValid={isValid}
                         onClientNameChange={setClientName}
+                        onClientPhoneChange={setClientPhone}
                         onConfirm={handleBooking}
                     />
                 </section>

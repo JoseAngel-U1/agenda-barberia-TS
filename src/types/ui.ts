@@ -135,6 +135,7 @@ export interface BookingDateTimeProps {
 
 export interface BookingSummaryProps {
     clientName: string
+    clientPhone: string
     selectedService?: Service
     selectedBarber?: Barber
     date: string
@@ -142,7 +143,9 @@ export interface BookingSummaryProps {
     success: Appointment | null
     bookingError: string
     isValid: boolean
+
     onClientNameChange: (value: string) => void
+    onClientPhoneChange: (value: string) => void
     onConfirm: () => void
 }
 
